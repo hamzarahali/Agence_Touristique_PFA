@@ -1,0 +1,152 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le :  jeu. 09 mai 2019 à 19:22
+-- Version du serveur :  10.1.37-MariaDB
+-- Version de PHP :  7.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `projet_php`
+--
+CREATE DATABASE IF NOT EXISTS `projet_php` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `projet_php`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `book`
+--
+
+CREATE TABLE `book` (
+  `num` int(11) NOT NULL,
+  `cin` varchar(8) NOT NULL,
+  `date` datetime NOT NULL,
+  `nb` int(11) NOT NULL,
+  `n1` varchar(20) DEFAULT NULL,
+  `p1` varchar(20) DEFAULT NULL,
+  `a1` int(11) DEFAULT NULL,
+  `n2` varchar(20) DEFAULT NULL,
+  `p2` varchar(20) DEFAULT NULL,
+  `a2` int(11) DEFAULT NULL,
+  `n3` varchar(20) DEFAULT NULL,
+  `p3` varchar(20) DEFAULT NULL,
+  `a3` int(11) DEFAULT NULL,
+  `n4` varchar(20) DEFAULT NULL,
+  `p4` varchar(20) DEFAULT NULL,
+  `a4` int(11) DEFAULT NULL,
+  `n5` varchar(20) DEFAULT NULL,
+  `p5` varchar(20) DEFAULT NULL,
+  `a5` int(11) DEFAULT NULL,
+  `num_circuit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `circuit`
+--
+
+CREATE TABLE `circuit` (
+  `num` int(11) NOT NULL,
+  `theme` varchar(10) NOT NULL,
+  `description` text NOT NULL,
+  `duree` int(11) NOT NULL,
+  `m_transport` varchar(20) NOT NULL,
+  `photo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `circuit`
+--
+
+INSERT INTO `circuit` (`num`, `theme`, `description`, `duree`, `m_transport`, `photo`) VALUES
+(1, 'Mer', 'Un circuit magnifique avec des paysages plus que splendides &#224 Bni Mtir o&#249 vous allez profiter de la vue panoramique du Djebal et du lac, en passant par Tabarka et le village de A&#239n Draham pour d&eacutecouvrir l&#146immense for&#234t qui couvre le massif de Khroumirie ces sont aussi des lieux de s&eacutejour exceptionnel pour une d&eacutetente absolue dans un environnement vivifiant. Par la suite, vous irez vers la ville de Bni Mtir pour visiter la cascade de Charchara et la for&#234t et pour terminer cette aventure, vous profiterez d&#146une  visite de la ville de B&eacuteja pour faire le shopping des produits laitiers traditionnels comme le fromage blanc, Fromage sans sel, le Beurre ..', 3, 'Jeeb', 'img\\pic01.jpg'),
+(2, 'Montagne', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam officia nam asperiores? Cupiditate culpa nisi dicta facere consectetur, temporibus esse repellendus obcaecati sunt consequatur possimus soluta aliquid ad accusamus exercitationem, vitae voluptas iste ab optio. Quasi fugiat ipsam sequi suscipit, nostrum animi possimus natus voluptas officia dicta fuga distinctio?', 3, 'Car ', 'img\\pic02.jpg'),
+(48, 'Voiture', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam officia nam asperiores? Cupiditate culpa nisi dicta facere consectetur, temporibus esse repellendus obcaecati sunt consequatur possimus soluta aliquid ad accusamus exercitationem, vitae voluptas iste ab optio. Quasi fugiat ipsam sequi suscipit, nostrum animi possimus natus voluptas officia dicta fuga distinctio?', 5, 'Voiture', 'img/pic06.jpg'),
+(50, 'Sahra', 'Au d&eacutepart de Djerba,\r\n vous commencez la d&eacutecouverte du Sud Tunisien : l&#146oasis de Ksar Ghilane. Vous profiterez d&#146une baignade dans une source d&#146eau chaude naturelle situ&eacutee au milieu de l&#146oasis en plein d&eacutesert. La ville de Tozeur connue par son architecture et ses oasis de Montagnes, sa cascade ce sera l&#146occasion de d&eacutecouvrir les lieux du tournage du film STAR WARS de George Lucas...', 3, 'Jeeb', 'img\\pic03.jpg'),
+(60, 'Avion', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam officia nam asperiores? Cupiditate culpa nisi dicta facere consectetur, temporibus esse repellendus obcaecati sunt consequatur possimus soluta aliquid ad accusamus exercitationem, vitae voluptas iste ab optio. Quasi fugiat ipsam sequi suscipit, nostrum animi possimus natus voluptas officia dicta fuga distinctio?', 13, 'Avion', 'img/pic05.jpg'),
+(720, 'Bateau', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam officia nam asperiores? Cupiditate culpa nisi dicta facere consectetur, temporibus esse repellendus obcaecati sunt consequatur possimus soluta aliquid ad accusamus exercitationem, vitae voluptas iste ab optio. Quasi fugiat ipsam sequi suscipit, nostrum animi possimus natus voluptas officia dicta fuga distinctio?', 5, 'bateau', 'img/pic04.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `register`
+--
+
+CREATE TABLE `register` (
+  `cin` varchar(8) NOT NULL,
+  `nom` varchar(20) NOT NULL,
+  `prenom` varchar(20) NOT NULL,
+  `adresse` varchar(50) NOT NULL,
+  `ntel` varchar(8) NOT NULL,
+  `sexe` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`num`),
+  ADD KEY `fk` (`cin`),
+  ADD KEY `fk2` (`num_circuit`);
+
+--
+-- Index pour la table `circuit`
+--
+ALTER TABLE `circuit`
+  ADD PRIMARY KEY (`num`);
+
+--
+-- Index pour la table `register`
+--
+ALTER TABLE `register`
+  ADD PRIMARY KEY (`cin`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `book`
+--
+ALTER TABLE `book`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `circuit`
+--
+ALTER TABLE `circuit`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=721;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `fk` FOREIGN KEY (`cin`) REFERENCES `register` (`cin`),
+  ADD CONSTRAINT `fk2` FOREIGN KEY (`num_circuit`) REFERENCES `circuit` (`num`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
